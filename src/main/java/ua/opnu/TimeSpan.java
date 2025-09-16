@@ -26,7 +26,7 @@ public class TimeSpan {
     }
 
     void add(int hours, int minutes) {
-        if (hours < 0 || minutes < 0 || minutes > 59) {
+        if (hours < 0 || minutes < 0) {
             return;
         }
         int totalCurrentMinutes = this.hours * 60 + this.minutes;
