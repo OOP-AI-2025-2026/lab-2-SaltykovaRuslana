@@ -6,14 +6,15 @@ public class TimeSpan {
     private int hours;
     private int minutes;
 
-    TimeSpan(int hours, int minutes) {
+    TimeSpan (int hours, int minutes) {
         if (hours < 0 || minutes < 0) {
             this.hours = 0;
             this.minutes = 0;
-            return;
+        } else {
+            this.hours = hours + minutes / 60;
+            this.minutes = minutes % 60;
         }
-        this.hours = hours + minutes / 60;
-        this.minutes = minutes % 60;
+
     }
 
     int getHours() {
@@ -25,7 +26,7 @@ public class TimeSpan {
     }
 
     void add(int hours, int minutes) {
-        if (hours < 0 || minutes < 0) {
+        if (hours < 0 || minutes < 0 || minutes > 59) {
             return;
         }
         int totalCurrentMinutes = this.hours * 60 + this.minutes;
@@ -59,7 +60,7 @@ public class TimeSpan {
         }
     }
 
-    void scale(int factor) {
+    public void scale(int factor) {
         if (factor > 0) {
             int totalMinutes = this.getTotalMinutes();
             int newTotalMinutes = totalMinutes * factor;
